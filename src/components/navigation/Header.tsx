@@ -24,10 +24,13 @@ const Header: React.FC<HeaderProp> = ({setOpenSideMenu}) => {
             <Link href={"/"}>Sermons</Link>
           </small>
           <small>
-            <Link href={"/"}>Songs</Link>
+            <Link href={"/#!"}>Songs</Link>
           </small>
           <small>
-            <Link href={"/"}>Articles</Link>
+            <Link href={"/#!"}>Articles</Link>
+          </small>
+          <small>
+            <Link href={"/auth/login"}>Admin</Link>
           </small>
         </nav>
         <button className="md:hidden" aria-label="open menu">

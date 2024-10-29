@@ -24,7 +24,7 @@
   aspect-ratio: 1;
   border-radius: 50%;
   border: 8px solid;
-  border-color: #000 #0000;
+  border-color: #31809a #62b7d3;
   animation: l1 1s infinite;
 }
 @keyframes l1 {to{transform: rotate(.5turn)}}
