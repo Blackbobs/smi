@@ -19,7 +19,7 @@ const ControlledInput: React.FC<ControlledInputProps> = ({type, placeholder}) =>
   const inputType = type === 'password' && showPassword ? 'text' : type;
 
   return (
-    <div className='flex items-center gap-3 p-4 w-full md:max-w-[600px] w-full border-[1.5px] border-[#00030AA3] rounded-md my-1'>
+    <div className='flex items-center gap-3 p-4 w-full md:max-w-[600px] border-[1.5px] border-[#00030AA3] rounded-md my-1'>
       <input autoComplete='off' className='flex-1 text-[#00030A52] text-[14px] focus:outline-none' type={inputType} placeholder={placeholder} />
       {type === 'password' && (
         showPassword ? (
