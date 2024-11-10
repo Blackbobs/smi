@@ -17,9 +17,7 @@ export default function Home() {
           <SideMenu setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
-      {/* <div className="fixed z-50 top-0 left-0 right-0 h-full w-full bg-black bg-opacity-50 overflow-hidden">
-        <SideMenu setOpenSideMenu={setOpenSideMenu} />
-      </div> */}
+     
       <div className="m-2">
         <SermonsList />
       </div>
