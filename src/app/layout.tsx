@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/navigation/Footer";
+import ToastProvider from "@/providers/ToastProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,9 @@ export default function RootLayout({
       >
         <main className="flex flex-col">
           <div className="min-h-[80%]">
+            <ToastProvider>
         {children}
+            </ToastProvider>
           </div>
         <div>
         <Footer/>

@@ -1,12 +1,16 @@
-import { Client, Databases, ID } from "appwrite";
+import { successToast } from "@/providers/Toast";
+import { User } from "@/types/User";
+import { Client, Account } from "appwrite";
 
 const client = new Client();
 
 client
   .setEndpoint("https://cloud.appwrite.io/v1")
-  .setProject("669aeaa80014de9755b8");
+  .setProject("673086740019928747d4");
 
-const databases = new Databases(client);
+// const databases = new Databases(client);
+const account = new Account(client)
+
 
 export const uploadSermon = async () => {
   try {
@@ -38,4 +42,14 @@ export const getAllSermons = async () => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const login = async({email, password}: User) => {
+try{
+   const response = await account.createEmailPasswordSession(email, password)
+   if(response) successToast('Login Successful')
+   return response
+}catch(error){
+  console.log(error)
+}
 }
