@@ -1,4 +1,4 @@
-import { successToast } from "@/providers/Toast";
+import { errorToast, successToast } from "@/providers/Toast";
 import { User } from "@/types/User";
 import { Client, Account } from "appwrite";
 
@@ -47,9 +47,14 @@ export const getAllSermons = async () => {
 export const login = async({email, password}: User) => {
 try{
    const response = await account.createEmailPasswordSession(email, password)
-   if(response) successToast('Login Successful')
+   if(response){
+    localStorage.setItem('user', JSON.stringify(response))
+     successToast('Login Successful')
+   }
+    
    return response
-}catch(error){
+}catch(error: any){
+  errorToast(error.message)
   console.log(error)
 }
 }
