@@ -30,7 +30,7 @@ const Header: React.FC<HeaderProp> = ({setOpenSideMenu}) => {
             <Link href={"/#!"}>Articles</Link>
           </small>
           <small>
-            <Link href={"/auth/login"}>Admin</Link>
+            <Link href={"/admin"}>Admin</Link>
           </small>
         </nav>
         <button className="md:hidden" aria-label="open menu">

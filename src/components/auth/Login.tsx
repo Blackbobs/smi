@@ -3,11 +3,11 @@ import React from "react";
 import ControlledInput from "../reuseable/ControlledInput";
 import Button from "../reuseable/Button";
 import Link from "next/link";
-import { login } from "@/appwrite";
 import { User } from "@/types/User";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {z} from 'zod'
 import { useForm } from 'react-hook-form';
+import { login } from "@/utils/auth";
 
 const userSchema = z.object({
   email: z.string().email(),

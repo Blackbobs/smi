@@ -35,7 +35,7 @@ const SideMenu: React.FC<SideMenuProps> = ({setOpenSideMenu}) => {
           </small>
           <small className='border-b border-gray-300 block w-full text-center p-2 flex items-center justify-center gap-2 text-secondary'>
             <MdAdminPanelSettings size={40}/>
-            <Link href={"/auth/login"}>Admin</Link>
+            <Link href={"/admin"}>Admin</Link>
           </small>
         </div>
     </aside>

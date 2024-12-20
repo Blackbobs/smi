@@ -3,8 +3,10 @@ import Header from "@/components/navigation/Header";
 import SermonsList from "@/components/blog/SermonsList";
 import SideMenu from "@/components/navigation/SideMenu";
 import { useState } from "react";
+import { getContentItems } from "@/utils/upload";
 
-export default function Home() {
+export default async function Home() {
+  // const recentContent = await getContentItems();
   const [openSideMenu, setOpenSideMenu] = useState(false);
 
   return (

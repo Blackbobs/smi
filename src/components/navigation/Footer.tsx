@@ -4,7 +4,7 @@ import { FaInstagram, FaYoutube, FaTiktok } from "react-icons/fa6";
 import Link from "next/link";
 const Footer = () => {
   return (
-    <footer className="bg-gray-950 mt-10 p-5 text-white">
+    <footer className="bg-gray-950 mt-10 p-2 text-white">
       <div className="space-y-3 p-5">
         <div className="max-w-screen-md mx-auto">
           <input
