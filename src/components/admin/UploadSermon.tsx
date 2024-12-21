@@ -1,4 +1,4 @@
-'use client'
+"use client";
 import React, { ChangeEvent, useId, useState } from "react";
 import Return from "./Return";
 import { BiCloudUpload } from "react-icons/bi";
@@ -101,115 +101,115 @@ const UploadSermon = () => {
   };
   return (
     <section>
-    <Return />
+      <Return />
 
-    <form onSubmit={handleSubmit} className="mt-24 p-3 space-y-5">
-      <div>
-        <input
-          className="p-4 w-full md:max-w-[600px] text-[#00030A52] text-[14px] focus:outline-none border-[1.5px] border-light rounded-md my-1"
-          type="text"
-          name="title"
-          placeholder="title"
-          value={formData.title}
-          onChange={(e) =>
-            setFormData((prevState) => ({
-              ...prevState,
-              title: e.target.value,
-            }))
-          }
-        />
-      </div>
-
-      <div>
-        <textarea
-          className="p-4 w-full md:max-w-[600px] text-[#00030A52] text-[14px] focus:outline-none border-[1.5px] border-light rounded-md my-1"
-          name="description"
-          placeholder="Description"
-          value={formData.description}
-          onChange={(e) =>
-            setFormData((prevState) => ({
-              ...prevState,
-              description: e.target.value,
-            }))
-          }
-        ></textarea>
-      </div>
-
-      <div>
-        <select
-          value={formData.type}
-          onChange={(e) =>
-            setFormData({ ...formData, type: e.target.value as ContentType })
-          }
-          name="ContentType"
-        >
-          <option value="song">audio</option>
-          <option value="video">video</option>
-        </select>
-      </div>
-
-      <div className="space-y-2">
-        <label className="text-[18px] text-gray-600" htmlFor="audio">
-          Please upload the audio file
-        </label>
+      <form onSubmit={handleSubmit} className="mt-24 p-3 space-y-5">
         <div>
           <input
+            className="p-4 w-full md:max-w-[600px] text-[#00030A52] text-[14px] focus:outline-none border-[1.5px] border-light rounded-md my-1"
+            type="text"
+            name="title"
+            placeholder="title"
+            value={formData.title}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                title: e.target.value,
+              }))
+            }
+          />
+        </div>
+
+        <div>
+          <textarea
+            className="p-4 w-full md:max-w-[600px] text-[#00030A52] text-[14px] focus:outline-none border-[1.5px] border-light rounded-md my-1"
+            name="description"
+            placeholder="Description"
+            value={formData.description}
+            onChange={(e) =>
+              setFormData((prevState) => ({
+                ...prevState,
+                description: e.target.value,
+              }))
+            }
+          ></textarea>
+        </div>
+
+        <div>
+          <select
+            value={formData.type}
+            onChange={(e) =>
+              setFormData({ ...formData, type: e.target.value as ContentType })
+            }
+            name="ContentType"
+          >
+            <option value="song">audio</option>
+            <option value="video">video</option>
+          </select>
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-[18px] text-gray-600" htmlFor="audio">
+            Please upload the audio file
+          </label>
+          <div>
+            <input
+              className="hidden"
+              id={audioId}
+              type="file"
+              onChange={handleFileChange("file")}
+              accept={formData.type === "video" ? "video/*" : "audio/*"}
+            />
+            <small
+              onClick={handleButtonClick}
+              className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md relative"
+            >
+              <MdOutlineAudiotrack size={30} />
+              {formData?.file ? (
+                <span>{formData?.file.name}</span>
+              ) : (
+                <span> upload audio file</span>
+              )}
+            </small>
+          </div>
+        </div>
+
+        <div className="space-y-2">
+          <label className="text-[18px] text-gray-600" htmlFor="flyer">
+            Please upload the flyer design
+          </label>
+          <input
             className="hidden"
-            id={audioId}
+            id={thumbnailId}
+            name="thumbnail"
             type="file"
-            onChange={handleFileChange("file")}
-            accept={formData.type === "video" ? "video/*" : "audio/*"}
+            onChange={handleFileChange("thumbnail")}
+            accept="image/*"
           />
           <small
-            onClick={handleButtonClick}
-            className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md relative"
+            onClick={handlethumbailClick}
+            className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md"
           >
             <MdOutlineAudiotrack size={30} />
-            {formData?.file ? (
-              <span>{formData?.file.name}</span>
+            {formData?.thumbnail ? (
+              <span>{formData?.thumbnail.name}</span>
             ) : (
-              <span> upload audio file</span>
+              <span> upload thumbnail file</span>
             )}
           </small>
         </div>
-      </div>
 
-      <div className="space-y-2">
-        <label className="text-[18px] text-gray-600" htmlFor="flyer">
-          Please upload the flyer design
-        </label>
-        <input
-          className="hidden"
-          id={thumbnailId}
-          name="thumbnail"
-          type="file"
-          onChange={handleFileChange("thumbnail")}
-          accept="image/*"
-        />
-        <small
-          onClick={handlethumbailClick}
-          className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md"
-        >
-          <MdOutlineAudiotrack size={30} />
-          {formData?.thumbnail ? (
-            <span>{formData?.thumbnail.name}</span>
-          ) : (
-            <span> upload thumbnail file</span>
-          )}
-        </small>
-      </div>
-
-      <div>
-        <button
-          className="bg-secondary w-full p-3 text-[18px] text-white capitalize font-bold my-3 rounded-lg md:text-[12px] md:p-2 flex items-center justify-center gap-2"
-          disabled={uploading}
-        >
-          <BiCloudUpload size={35} />
-          {uploading ? "Uploading..." : "Upload Audio"}
-        </button>
-      </div>
-    </form>
-  </section>
+        <div>
+          <button
+            className="bg-secondary w-full p-3 text-[18px] text-white capitalize font-bold my-3 rounded-lg md:text-[12px] md:p-2 flex items-center justify-center gap-2"
+            disabled={uploading}
+          >
+            <BiCloudUpload size={35} />
+            {uploading ? "Uploading..." : "Upload Audio"}
+          </button>
+        </div>
+      </form>
+    </section>
   );
 };
 
