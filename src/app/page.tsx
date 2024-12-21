@@ -3,12 +3,10 @@ import Header from "@/components/navigation/Header";
 import SermonsList from "@/components/blog/SermonsList";
 import SideMenu from "@/components/navigation/SideMenu";
 import { useState } from "react";
-import { getContentItems } from "@/utils/upload";
 
-export default async function Home() {
-  // const recentContent = await getContentItems();
+export default function Home() {
   const [openSideMenu, setOpenSideMenu] = useState(false);
-
+  
   return (
     <main className="relative">
       <div className="sticky top-0 left-0 right-0 h-fit">
@@ -19,7 +17,7 @@ export default async function Home() {
           <SideMenu setOpenSideMenu={setOpenSideMenu} />
         </div>
       )}
-     
+
       <div className="m-2">
         <SermonsList />
       </div>

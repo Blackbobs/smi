@@ -19,7 +19,7 @@ const UploadSermon = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    type: "song" as ContentType,
+    type: "audio" as ContentType,
     file: null as File | null,
     thumbnail: null as File | null,
   });
@@ -143,8 +143,7 @@ const UploadSermon = () => {
           }
           name="ContentType"
         >
-          <option value="song">song</option>
-          <option value="sermon">sermon</option>
+          <option value="song">audio</option>
           <option value="video">video</option>
         </select>
       </div>
