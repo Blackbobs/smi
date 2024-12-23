@@ -77,6 +77,7 @@ const UploadAudio: React.FC = () => {
       if (formData.thumbnail) {
         thumbnailUrl = await uploadFile(formData.thumbnail, "thumbnail");
         if (!thumbnailUrl) throw new Error("Thumbnail upload failed");
+        setThumbnailUrl(thumbnailUrl);
       }
 
       // Create content item
@@ -159,6 +160,7 @@ const UploadAudio: React.FC = () => {
               className="hidden"
               id={audioId}
               type="file"
+              value={audioUrl as string}
               onChange={handleFileChange("file")}
               accept={formData.type === "video" ? "video/*" : "audio/*"}
             />
@@ -185,6 +187,7 @@ const UploadAudio: React.FC = () => {
             id={thumbnailId}
             name="thumbnail"
             type="file"
+            value={thumbnailUrl as string}
             onChange={handleFileChange("thumbnail")}
             accept="image/*"
           />

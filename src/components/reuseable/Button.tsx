@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, {useState} from 'react'
+import React from 'react'
 import { twMerge } from 'tailwind-merge';
 import Loader from './Loader';
 

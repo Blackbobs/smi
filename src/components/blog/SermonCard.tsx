@@ -2,7 +2,6 @@
 import { convertToNormalTime } from "@/lib/converTime";
 import { Message } from "@/types/Message";
 import { donwloadFile } from "@/utils/upload";
-import Image from "next/image";
 import React, { useState } from "react";
 import { BiCloudDownload } from "react-icons/bi";
 
@@ -63,6 +62,7 @@ const SermonCard: React.FC<SermonCardProps> = ({ handleRoute, message }) => {
         <p className="text-[16px] font-medium text-gray-400 text-wrap w-full md:text-[12px]">
           {message.description}
         </p>
+        <audio className="hidden" src={audioUrl as string}></audio>
         <button
           onClick={handleDownload}
           className="bg-secondary w-full p-3 text-[18px] text-white capitalize font-bold my-3 rounded-lg md:text-[12px] md:p-2 flex items-center justify-center gap-2"

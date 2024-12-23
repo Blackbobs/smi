@@ -1,4 +1,4 @@
-export const convertToNormalTime = (timestamp: any) => {
+export const convertToNormalTime = (timestamp: string) => {
   const date = new Date(timestamp);
   return date.toLocaleTimeString([], {
     hour: "2-digit",

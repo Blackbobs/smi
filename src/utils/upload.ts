@@ -1,4 +1,6 @@
+import { errorToast } from "@/providers/Toast";
 import { supabase } from "@/supabase/client";
+import { error } from "console";
 
 export type ContentType = "audio" | "video";
 
@@ -81,12 +83,16 @@ export const getMessages = async () => {
 
 export const donwloadFile = async ( file_url: string,
   type: "audio" | "video" | "thumbnail") => {
-    let url = file_url
-    let baseUrl = 'https://mchypagxryauuvqpjkjj.supabase.co/storage/v1/object/public/audio'
-    let new_url = url.replace(baseUrl, '');
+    const url = file_url
+    const baseUrl = 'https://mchypagxryauuvqpjkjj.supabase.co/storage/v1/object/public/audio'
+    const new_url = url.replace(baseUrl, '');
   const { data, error } = await supabase.storage
     .from(type)
     .download(new_url);
+
+    if(error){
+      errorToast(error)
+    }
 
   return data
 };
@@ -105,7 +111,10 @@ export async function uploadFile(
     .from(type)
     .upload(filePath, file);
 
-  if (uploadError) throw uploadError;
+  if (uploadError) {
+    errorToast(error)
+    throw uploadError;
+  }
 
   const {
     data: { publicUrl },
@@ -128,7 +137,10 @@ export async function uploadMessage(
     .from(type)
     .upload(filePath, file);
 
-  if (uploadError) throw uploadError;
+    if (uploadError) {
+      errorToast(error)
+      throw uploadError;
+    }
 
   const {
     data: { publicUrl },
