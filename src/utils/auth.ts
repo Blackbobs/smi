@@ -2,9 +2,8 @@ import { errorToast, successToast } from "@/providers/Toast";
 import { supabase } from "@/supabase/client";
 import { User } from "@/types/User";
 
-export async function login(data: User) {
-    const { email, password } = data;
-    try {
+export async function login(userData: User) {
+    const { email, password } = userData;
       const { data, error } = await supabase.auth.signInWithPassword({
         email: email,
         password: password,
@@ -22,8 +21,5 @@ export async function login(data: User) {
   
       // console.log(data, error);
       return { data, error };
-    } catch (error) {
-      errorToast(error);
-      console.log(error);
-    }
+    
   }
