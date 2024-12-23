@@ -47,7 +47,7 @@ const SermonCard: React.FC<SermonCardProps> = ({ handleRoute, message }) => {
     <article className="p-5 shadow-md shadow-gray-300 rounded-lg w-full md:max-w-[300px]">
       <div
         onClick={handleRoute}
-        className="w-full h-[250px] bg-light rounded-lg"
+        className="w-full h-full bg-light rounded-lg"
       >
         <img
           src={message.thumbnail_url}
@@ -68,7 +68,7 @@ const SermonCard: React.FC<SermonCardProps> = ({ handleRoute, message }) => {
           className="bg-secondary w-full p-3 text-[18px] text-white capitalize font-bold my-3 rounded-lg md:text-[12px] md:p-2 flex items-center justify-center gap-2"
         >
           <BiCloudDownload size={35} />
-          {isLoading ? <span>downloading</span> : <span>download sermon</span>}
+          {isLoading ? <span>downloading</span> : <span>download song</span>}
         </button>
       </div>
     </article>

@@ -68,6 +68,15 @@ export const getMessages = async () => {
 
 }
 
+// export const getSongs = async () => {
+//   const { data, error } = await supabase
+//   .from('songs')
+//   .select()
+//   console.log(data, error)
+//   return {data, error}
+
+// }
+
 // Use the JS library to download a file.
 
 export const donwloadFile = async ( file_url: string,
