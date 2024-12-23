@@ -4,6 +4,6 @@ export const successToast = (message: string) => {
   toast.success(message || "success");
 };
 
-export const errorToast = (message: string | any) => {
+export const errorToast = (message: string) => {
   toast.error(message || "An error occurred");
 };
