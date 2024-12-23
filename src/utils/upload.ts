@@ -1,6 +1,5 @@
 import { errorToast } from "@/providers/Toast";
 import { supabase } from "@/supabase/client";
-import { error } from "console";
 
 export type ContentType = "audio" | "video";
 
@@ -65,7 +64,7 @@ export const getMessages = async () => {
   const { data, error } = await supabase
   .from('messages')
   .select()
-  console.log(data, error)
+  // console.log(data, error)
   return {data, error}
 
 }
@@ -112,7 +111,7 @@ export async function uploadFile(
     .upload(filePath, file);
 
   if (uploadError) {
-    errorToast(error)
+    errorToast(uploadError)
     throw uploadError;
   }
 
@@ -138,7 +137,7 @@ export async function uploadMessage(
     .upload(filePath, file);
 
     if (uploadError) {
-      errorToast(error)
+      errorToast(uploadError)
       throw uploadError;
     }
 
