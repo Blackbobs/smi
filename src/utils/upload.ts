@@ -60,14 +60,15 @@ export async function getCategories(): Promise<Category[]> {
 //   return data;
 // }
 
+
 export const getMessages = async () => {
   const { data, error } = await supabase
   .from('messages')
   .select()
   // console.log(data, error)
   return {data, error}
-
 }
+export const getAudioById = async () => {}
 
 // export const getSongs = async () => {
 //   const { data, error } = await supabase
@@ -96,31 +97,31 @@ export const donwloadFile = async ( file_url: string,
   return data
 };
 
-export async function uploadFile(
-  file: File,
-  type: "audio" | "video" | "thumbnail"
-) {
-  // Use the JS library to create a bucket.
+// export async function uploadFile(
+//   file: File,
+//   type: "audio" | "video" | "thumbnail"
+// ) {
+//   // Use the JS library to create a bucket.
 
-  const fileExt = file.name.split(".").pop();
-  const fileName = `${Math.random()}.${fileExt}`;
-  const filePath = `${type}/${fileName}`;
+//   const fileExt = file.name.split(".").pop();
+//   const fileName = `${Math.random()}.${fileExt}`;
+//   const filePath = `${type}/${fileName}`;
 
-  const { error: uploadError } = await supabase.storage
-    .from(type)
-    .upload(filePath, file);
+//   const { error: uploadError } = await supabase.storage
+//     .from(type)
+//     .upload(filePath, file);
 
-  if (uploadError) {
-    errorToast('An error occured while uploading');
-    throw uploadError;
-  }
+//   if (uploadError) {
+//     errorToast('An error occured while uploading');
+//     throw uploadError;
+//   }
 
-  const {
-    data: { publicUrl },
-  } = supabase.storage.from(type).getPublicUrl(filePath);
+//   const {
+//     data: { publicUrl },
+//   } = supabase.storage.from(type).getPublicUrl(filePath);
 
-  return publicUrl;
-}
+//   return publicUrl;
+// }
 
 export async function uploadMessage(
   file: File,

@@ -52,20 +52,17 @@ const UploadSermon = () => {
     }
 
     if (formData.file.size > 50 * 1024 * 1024) {
-      // Example: limit to 50MB
       errorToast("Audio file is too large");
       return;
     }
 
     if (formData.thumbnail && formData.thumbnail.size > 5 * 1024 * 1024) {
-      // Example: limit to 5MB for thumbnail
       errorToast("Thumbnail image is too large");
       return;
     }
 
     setUploading(true);
     try {
-      // Upload main file
       const audioUrl = await uploadMessage(
         formData.file,
         formData.type === "video" ? "video" : "audio"
@@ -73,7 +70,6 @@ const UploadSermon = () => {
       if (!audioUrl) throw new Error("Audio file upload failed");
       setAudioUrl(audioUrl);
 
-      // Upload thumbnail if provided
       let thumbnailUrl = null;
       if (formData.thumbnail) {
         thumbnailUrl = await uploadMessage(formData.thumbnail, "thumbnail");
@@ -81,10 +77,10 @@ const UploadSermon = () => {
         setThumbnailUrl(thumbnailUrl);
       }
 
-      // Create content item
       const { error } = await supabase.from("messages").insert({
         title: formData.title,
         description: formData.description,
+        category: formData.category,
         type: formData.type,
         file_url: audioUrl,
         thumbnail_url: thumbnailUrl,
