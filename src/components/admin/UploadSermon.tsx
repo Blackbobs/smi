@@ -19,6 +19,7 @@ const UploadSermon = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
+    category: "",
     type: "audio" as ContentType,
     file: null as File | null,
     thumbnail: null as File | null,
@@ -45,7 +46,7 @@ const UploadSermon = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    if (!formData.file || !formData.type || !formData.title) {
+    if (!formData.file || !formData.type || !formData.category || !formData.title) {
       errorToast("Please fill in all required fields");
       return;
     }
@@ -146,6 +147,20 @@ const UploadSermon = () => {
           >
             <option value="song">audio</option>
             <option value="video">video</option>
+          </select>
+        </div>
+
+
+        <div>
+          <select
+            value={formData.category}
+            onChange={(e) =>
+              setFormData({ ...formData, category: e.target.value })
+            }
+            name="ContentType"
+          >
+            <option value="song">song</option>
+            <option value="sermon">sermon</option>
           </select>
         </div>
 

@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "@/components/navigation/Footer";
 import ToastProvider from "@/providers/ToastProvider";
+import ReactQueryProvider from "@/providers/ReactQueryProvider";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -17,7 +18,8 @@ const geistMono = localFont({
 
 export const metadata: Metadata = {
   title: "Saint Ministry International",
-  description: "A blog application for documenting the journey of saint ministry international and wordcity. It includes the documentaion of the sermons, songs, articles, e.t.c.",
+  description:
+    "A blog application for documenting the journey of saint ministry international and wordcity. It includes the documentaion of the sermons, songs, articles, e.t.c.",
 };
 
 export default function RootLayout({
@@ -32,13 +34,15 @@ export default function RootLayout({
       >
         <main className="flex flex-col">
           <div className="min-h-[80%]">
-            <ToastProvider>
-        {children}
-            </ToastProvider>
+            {/* <ReactQueryProvider> */}
+              <ToastProvider>
+                {children}
+                </ToastProvider>
+            {/* </ReactQueryProvider> */}
           </div>
-        <div>
-        <Footer/>
-        </div>
+          <div>
+            <Footer />
+          </div>
         </main>
       </body>
     </html>
