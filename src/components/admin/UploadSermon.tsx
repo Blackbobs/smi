@@ -178,7 +178,7 @@ const UploadSermon = () => {
               onChange={handleFileChange("file")}
               accept={formData.type === "video" ? "video/*" : "audio/*"}
             />
-            <audio className="hidden" src={audioUrl as string}></audio>
+           {audioUrl && <audio className="hidden" src={audioUrl}></audio>}
             <small
               onClick={handleButtonClick}
               className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md relative"
@@ -206,13 +206,15 @@ const UploadSermon = () => {
             onChange={handleFileChange("thumbnail")}
             accept="image/*"
           />
-          <Image
-            className="hidden"
-            src={thumbnailUrl as string}
-            width={100}
-            height={100}
-            alt="thumbnail"
-          />
+          {thumbnailUrl && (
+            <Image
+              className="hidden"
+              src={thumbnailUrl}
+              width={100}
+              height={100}
+              alt="thumbnail"
+            />
+          )}
           <small
             onClick={handlethumbailClick}
             className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md"
