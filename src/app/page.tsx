@@ -1,19 +1,26 @@
 "use client";
 import Header from "@/components/navigation/Header";
-import SermonsList from "@/components/blog/SermonsList";
 import SideMenu from "@/components/navigation/SideMenu";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Message } from "@/types/Message";
 import Loader from "@/lib/Loader";
 import Error from "@/components/reuseable/Error";
-import { useRouter } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { getMessages } from "@/utils/upload";
 import SermonCard from "@/components/blog/SermonCard";
 
 export default function Home() {
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const router = useRouter();
+  const pathname = usePathname();
+  const [showHeader, setShowHeader] = useState(true);
+
+  useEffect(() => {
+  if(pathname === "/"){
+    setShowHeader(true)
+  }
+},[pathname])
 
   const {
     data: messages,
@@ -38,13 +45,17 @@ export default function Home() {
 
   return (
     <main className="relative">
-      <div className="sticky top-0 left-0 right-0 h-fit">
-        <Header setOpenSideMenu={setOpenSideMenu} />
-      </div>
-      {openSideMenu && (
-        <div className="fixed z-50 top-0 left-0 right-0 h-full w-full bg-black bg-opacity-50 overflow-hidden">
-          <SideMenu setOpenSideMenu={setOpenSideMenu} />
-        </div>
+       {showHeader && (
+        <>
+          <div className="sticky top-0 left-0 right-0 h-fit">
+            <Header setOpenSideMenu={setOpenSideMenu} />
+          </div>
+          {openSideMenu && (
+            <div className="fixed z-50 top-0 left-0 right-0 h-full w-full bg-black bg-opacity-50 overflow-hidden">
+              <SideMenu setOpenSideMenu={setOpenSideMenu} />
+            </div>
+          )}
+        </>
       )}
 
       <div className="m-2">

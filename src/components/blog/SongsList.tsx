@@ -5,11 +5,9 @@ import Loader from "@/lib/Loader";
 import { Message } from "@/types/Message";
 import { getSongs } from "@/utils/upload";
 import { useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
 import SermonCard from "./SermonCard";
 
 const SongsList = () => {
-  const router = useRouter();
 
   const {
     data: songs,
@@ -38,7 +36,7 @@ const SongsList = () => {
           <SermonCard
             key={idx}
             message={song}
-            handleRoute={() => router.push(`/songs/${idx}`)}
+            // handleRoute={() => router.push(`/songs/${idx}`)}
           />
         ))}
     </section>

@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import SermonCard from "./SermonCard";
-import { useRouter } from "next/navigation";
 import { getSermons } from "@/utils/upload";
 import { Message } from "@/types/Message";
 import { useQuery } from "@tanstack/react-query";
@@ -30,7 +29,7 @@ const SermonsList = () => {
     );
   }
 
-  const router = useRouter();
+
   return (
     <section className="w-full flex flex-col md:flex-row flex-wrap items-center justify-center gap-5">
       {messages && messages.length > 0 ? (
@@ -38,7 +37,7 @@ const SermonsList = () => {
           <SermonCard
             key={message.id} // Assuming message has a unique `id`
             message={message}
-            handleRoute={() => router.push(`/sermons/${message.id}`)} // Using `message.id` for routing
+            // handleRoute={() => router.push(`/sermons/${message.id}`)} // Using `message.id` for routing
           />
         ))
       ) : (

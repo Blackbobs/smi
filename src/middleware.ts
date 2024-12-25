@@ -1,4 +1,3 @@
-import { useQuery } from "@tanstack/react-query";
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { getCurrentUser } from "./utils/auth";

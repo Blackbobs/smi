@@ -7,6 +7,7 @@ import { errorToast, successToast } from "@/providers/Toast";
 import { ContentType, uploadMessage } from "@/utils/upload";
 import { supabase } from "@/supabase/client";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 const UploadSermon = () => {
   const audioId = useId();
@@ -46,7 +47,12 @@ const UploadSermon = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     console.log(formData);
-    if (!formData.file || !formData.type || !formData.category || !formData.title) {
+    if (
+      !formData.file ||
+      !formData.type ||
+      !formData.category ||
+      !formData.title
+    ) {
       errorToast("Please fill in all required fields");
       return;
     }
@@ -146,7 +152,6 @@ const UploadSermon = () => {
           </select>
         </div>
 
-
         <div>
           <select
             value={formData.category}
@@ -173,6 +178,7 @@ const UploadSermon = () => {
               onChange={handleFileChange("file")}
               accept={formData.type === "video" ? "video/*" : "audio/*"}
             />
+            <audio className="hidden" src={audioUrl as string}></audio>
             <small
               onClick={handleButtonClick}
               className="flex items-center justify-center flex-col gap-5 gap-2 border border-light text-secondary text-[14px] font-medium capitalize p-3 w-full h-28 rounded-md relative"
@@ -199,6 +205,13 @@ const UploadSermon = () => {
             // value={thumbnailUrl as string}
             onChange={handleFileChange("thumbnail")}
             accept="image/*"
+          />
+          <Image
+            className="hidden"
+            src={thumbnailUrl as string}
+            width={100}
+            height={100}
+            alt="thumbnail"
           />
           <small
             onClick={handlethumbailClick}

@@ -2,6 +2,7 @@
 import { convertToNormalTime } from "@/lib/converTime";
 import { Message } from "@/types/Message";
 import { donwloadFile } from "@/utils/upload";
+import Image from "next/image";
 import React, { useState } from "react";
 import { BiCloudDownload } from "react-icons/bi";
 
@@ -48,10 +49,13 @@ const SermonCard: React.FC<SermonCardProps> = ({ handleRoute, message }) => {
         onClick={handleRoute}
         className="w-full h-full bg-light rounded-lg"
       >
-        <img
+        <Image
           src={message.thumbnail_url}
           alt="thumbnail_url"
           className="object-cover rounded-lg w-full h-full"
+          width={100}
+          height={100}
+          priority
         />
       </div>
       <div className="py-2">

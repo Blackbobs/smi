@@ -5,7 +5,7 @@ import SideMenu from "@/components/navigation/SideMenu";
 import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
-const page = () => {
+const Page = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const pathname = usePathname();
 
@@ -33,4 +33,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
