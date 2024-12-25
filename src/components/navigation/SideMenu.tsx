@@ -23,11 +23,11 @@ const SideMenu: React.FC<SideMenuProps> = ({setOpenSideMenu}) => {
         <div className='flex flex-col items-center pt-10 text-[28px] font-semibold space-y-5'>
         <small className='border-b border-gray-300 block w-full text-center p-2 flex items-center justify-center gap-2 text-secondary'>
           <BiSolidBookOpen size={30}/>
-            <Link href={"/"}>Sermons</Link>
+            <Link href={"/sermons"}>Sermons</Link>
           </small>
           <small className='border-b border-gray-300 block w-full text-center p-2 flex items-center justify-center gap-2 text-secondary'>
             <AiFillAudio size={35}/>
-            <Link href={"/"}>Songs</Link>
+            <Link href={"/songs"}>Songs</Link>
           </small>
           <small className='border-b border-gray-300 block w-full text-center p-2 flex items-center justify-center gap-2 text-secondary'>
             <RiArticleFill size={35}/>

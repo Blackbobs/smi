@@ -1,11 +1,36 @@
-import React from 'react'
+"use client";
+import SongsList from "@/components/blog/SongsList";
+import Header from "@/components/navigation/Header";
+import SideMenu from "@/components/navigation/SideMenu";
+import { usePathname } from "next/navigation";
+import React, { useState } from "react";
 
 const page = () => {
-  return (
-    <section>
-        {/* Get all songs */}
-    </section>
-  )
-}
+  const [openSideMenu, setOpenSideMenu] = useState(false);
+  const pathname = usePathname();
 
-export default page
+  const showHeader = pathname === "/songs";
+
+  return (
+    <>
+      {showHeader && (
+        <>
+          <div className="sticky top-0 left-0 right-0 h-fit">
+            <Header setOpenSideMenu={setOpenSideMenu} />
+          </div>
+          {openSideMenu && (
+            <div className="fixed z-50 top-0 left-0 right-0 h-full w-full bg-black bg-opacity-50 overflow-hidden">
+              <SideMenu setOpenSideMenu={setOpenSideMenu} />
+            </div>
+          )}
+        </>
+      )}
+
+      <div className="m-2">
+        <SongsList />
+      </div>
+    </>
+  );
+};
+
+export default page;

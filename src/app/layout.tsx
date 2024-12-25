@@ -34,11 +34,11 @@ export default function RootLayout({
       >
         <main className="flex flex-col">
           <div className="min-h-[80%]">
-            {/* <ReactQueryProvider> */}
+            <ReactQueryProvider>
               <ToastProvider>
                 {children}
                 </ToastProvider>
-            {/* </ReactQueryProvider> */}
+            </ReactQueryProvider>
           </div>
           <div>
             <Footer />

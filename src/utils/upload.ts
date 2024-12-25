@@ -1,5 +1,6 @@
 import { errorToast } from "@/providers/Toast";
 import { supabase } from "@/supabase/client";
+import { Message } from "@/types/Message";
 
 export type ContentType = "audio" | "video";
 
@@ -61,14 +62,59 @@ export async function getCategories(): Promise<Category[]> {
 // }
 
 
-export const getMessages = async () => {
+export const getMessages = async (): Promise<Message[]> => {
+  const { data, error } = await supabase
+    .from('messages')
+    .select();
+
+  if (error) {
+    // errorToast('An error occured, please refresh the page')
+    throw new Error(error.message); 
+  }
+
+  return data as Message[];
+};
+export const getAudioById = async (id: string) => {
   const { data, error } = await supabase
   .from('messages')
   .select()
-  // console.log(data, error)
-  return {data, error}
+  .eq('id', id)
+
+if (error) {
+  // errorToast('An error occured, please refresh the page')
+  throw new Error(error.message); 
 }
-export const getAudioById = async () => {}
+
+return data as Message[];
+}
+
+export const getSongs = async () => {
+  const { data, error } = await supabase
+  .from('messages')
+  .select()
+  .eq('category', 'song')
+
+if (error) {
+  // errorToast('An error occured, please refresh the page')
+  throw new Error(error.message); 
+}
+
+return data as Message[];
+}
+
+export const getSermons = async () => {
+  const { data, error } = await supabase
+  .from('messages')
+  .select()
+  .eq('category', 'sermon')
+
+if (error) {
+  // errorToast('An error occured, please refresh the page')
+  throw new Error(error.message); 
+}
+
+return data as Message[];
+}
 
 // export const getSongs = async () => {
 //   const { data, error } = await supabase

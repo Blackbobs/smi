@@ -19,7 +19,7 @@ const UploadSermon = () => {
   const [formData, setFormData] = useState({
     title: "",
     description: "",
-    category: "",
+    category: "song",
     type: "audio" as ContentType,
     file: null as File | null,
     thumbnail: null as File | null,
@@ -169,7 +169,7 @@ const UploadSermon = () => {
               className="hidden"
               id={audioId}
               type="file"
-              value={audioUrl as string}
+              // value={audioUrl as string}
               onChange={handleFileChange("file")}
               accept={formData.type === "video" ? "video/*" : "audio/*"}
             />
@@ -196,7 +196,7 @@ const UploadSermon = () => {
             id={thumbnailId}
             name="thumbnail"
             type="file"
-            value={thumbnailUrl as string}
+            // value={thumbnailUrl as string}
             onChange={handleFileChange("thumbnail")}
             accept="image/*"
           />
